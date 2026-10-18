@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-limelight);
+  --font-head: var(--font-josefin);
+  --font-sans: var(--font-inter);
+
+  --color-page: var(--page); /* background */
+  --color-surface: var(--surface); /* cards, footer */
+  --color-line: var(--line); /* borders */
+  --color-fg: var(--fg); /* main text */
+  --color-muted: var(--muted); /* secondary text */
+  --color-accent: var(--accent); /* blue accent */
+  --color-on-accent: var(--on-accent); /* text on accent buttons */
+  --color-ok: #3fb878; /* "open to work" dot, success messages */
+}
+
+/* Dark is the default. */
+:root {
+  color-scheme: dark;
+  --page: #0e1320;
+  --surface: #151c2c;
+  --line: #243049;
+  --fg: #e6e9f0;
+  --muted: #9aa4b8;
+  --accent: #8aa6d9;
+  --on-accent: #0e1320;
+}
+
+/* Light: used when the visitor picks it, or when their system is light. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #f4f6fa;
+  --surface: #ffffff;
+  --line: #dbe1ec;
+  --fg: #141a29;
+  --muted: #566079;
+  --accent: #3f5a8a;
+  --on-accent: #ffffff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --page: #f4f6fa;
+    --surface: #ffffff;
+    --line: #dbe1ec;
+    --fg: #141a29;
+    --muted: #566079;
+    --accent: #3f5a8a;
+    --on-accent: #ffffff;
+  }
+}
+
+@utility wrap {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background:
+    radial-gradient(50rem 30rem at 85% -5%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+    var(--page);
+  background-repeat: no-repeat;
+  background-color: var(--page);
+  color: var(--fg);
+}
+
+/* Theme toggle icon: show the right one without JavaScript state. */
+.when-light {
+  display: none;
+}
+:root[data-theme="light"] .when-light {
+  display: inline-flex;
+}
+:root[data-theme="light"] .when-dark {
+  display: none;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .when-light {
+    display: inline-flex;
+  }
+  :root:not([data-theme="dark"]) .when-dark {
+    display: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
