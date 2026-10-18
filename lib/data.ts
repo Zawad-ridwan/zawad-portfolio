@@ -7,7 +7,7 @@ export const site = {
   intro:
     "Computer Science graduate from BRAC University. I build web applications end to end, from the database to the interface.",
   availability: "Open to full-stack developer roles", // set to "" to hide
-  url: "https://your-domain.com", // TODO: your live URL once deployed (used for share previews)
+  url: "https://zawad-portfolio-alpha.vercel.app", // TODO: your live URL once deployed (used for share previews)
 };
 
 export const links = {
